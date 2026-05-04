@@ -1,0 +1,15 @@
+Django==4.2.7
+djangorestframework==3.14.0
+djangorestframework-simplejwt==5.3.0
+django-filter==23.3
+django-parler==2.3
+django-parler-rest==2.2
+django-redis==5.4.0
+python-dotenv==1.0.0
+psycopg2-binary==2.9.7
+Pillow==10.0.1
+django-storages[boto3]==1.14.2
+boto3==1.29.7
+minio==7.2.0
+gunicorn==21.2.0
+drf-yasg==1.21.7
