@@ -1,22 +1,20 @@
-# DRF Merged Project
+# Django Starter Project
 
-A unified Django REST Framework project that combines authentication, file upload, and API gateway functionality.
+A modern Django REST Framework project with authentication, file upload, and containerized deployment.
 
 ## Features
 
 - **Authentication System**: User registration, login, JWT tokens, profile management
-- **File Upload/Download**: MinIO-based file storage with user permissions
-- **API Gateway**: Nginx reverse proxy with load balancing
+- **File Upload/Download**: File storage with user permissions
 - **Role-Based Access Control**: Comprehensive permission system
-- **Multi-language Support**: Uzbek, Russian, English
 - **Docker Support**: Complete containerized deployment
+- **Just Task Runner**: Efficient task management with justfile
 
 ## Architecture
 
-This project merges three Django applications:
-- `drf-auth`: Authentication and user management
-- `drf-file`: File upload/download with MinIO
-- `drf-gateway`: API gateway and nginx configuration
+This project includes Django applications:
+- `account`: Authentication and user management
+- `upload`: File upload/download functionality
 
 ## Prerequisites
 
@@ -31,7 +29,7 @@ This project merges three Django applications:
 1. **Clone and setup:**
    ```bash
    git clone <repository-url>
-   cd merged-project
+   cd djStarter
    cp .env.example .env
    ```
 
@@ -40,14 +38,14 @@ This project merges three Django applications:
 
 3. **Build and run:**
    ```bash
-   make build
-   make up
+   just build
+   just up
    ```
 
 4. **Setup database:**
    ```bash
-   make migrate
-   make superuser
+   just migrate
+   just su
    ```
 
 ## API Endpoints
@@ -72,19 +70,19 @@ This project merges three Django applications:
 
 ```bash
 # Start development server
-make dev
+just dev
 
 # Docker commands
-make up          # Start all containers
-make down        # Stop containers
-make shell       # Django shell
-make logs        # View logs
-make clean       # Clean everything
+just up          # Start all containers
+just down        # Stop containers
+just shell       # Django shell
+just logs        # View logs
+just clean       # Clean everything
 
 # Database
-make migrate     # Run migrations
-make superuser   # Create superuser
-make seed        # Seed database
+just migrate     # Run migrations
+just su          # Create superuser
+just seed        # Seed database
 ```
 
 ## Environment Variables
@@ -93,7 +91,7 @@ make seed        # Seed database
 |----------|---------|-------------|
 | `DEBUG` | True | Django debug mode |
 | `SECRET_KEY` | - | Django secret key |
-| `DB_NAME` | drf_merged | Database name |
+| `DB_NAME` | djstarter | Database name |
 | `DB_USER` | postgres | Database user |
 | `DB_PASSWORD` | root | Database password |
 | `REDIS_HOST` | redis | Redis server |
@@ -125,7 +123,7 @@ Nginx acts as a reverse proxy, routing requests to the Django application and se
 
 ## Monitoring
 
-- Application logs: `make logs`
+- Application logs: `just logs`
 - Nginx logs: `./docker/log/`
 - Health checks configured for all services
 
@@ -134,5 +132,5 @@ Nginx acts as a reverse proxy, routing requests to the Django application and se
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Test with `make dev`
+4. Test with `just dev`
 5. Submit a pull request
